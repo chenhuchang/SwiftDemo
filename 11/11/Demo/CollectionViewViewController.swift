@@ -92,11 +92,11 @@ class CollectionViewViewController: UIViewController,UICollectionViewDelegate,UI
                 label.textAlignment = NSTextAlignment.left
                 headerview.addSubview(label)
             }
-            let tmpStr = "第\(indexPath.section)个分组"
+            let tmpStr = "第 \(indexPath.section) 个分组"
             let titleAttribute: NSDictionary = [NSForegroundColorAttributeName: UIColor.white,NSFontAttributeName : UIFont.boldSystemFont(ofSize: 15)]
             let nameStr = NSMutableAttributedString.init(string: tmpStr, attributes: titleAttribute as? [String : AnyObject])
-            nameStr.addAttribute(NSForegroundColorAttributeName, value:UIColor.blue, range:NSRange(location:1,length:1))
-            nameStr.addAttribute(NSForegroundColorAttributeName, value:UIColor.orange, range:NSRange(location:3,length:2))
+            nameStr.addAttribute(NSForegroundColorAttributeName, value:UIColor.blue, range:NSRange(location:2,length:1))
+            nameStr.addAttribute(NSForegroundColorAttributeName, value:UIColor.orange, range:NSRange(location:5,length:2))
             label.attributedText = nameStr
             headerview.backgroundColor = UIColor.white
             return headerview
