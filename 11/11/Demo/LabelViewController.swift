@@ -17,15 +17,21 @@ class LabelViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // label
-        label = UILabel(frame:CGRect(x:20,y:80,width:150,height:30))
-        label.text = "hello Swift"
+        label = UILabel(frame:CGRect(x:20,y:80,width:(self.view.frame.size.width - 40),height:30))
         label.font = UIFont.systemFont(ofSize: 15)
-        label.backgroundColor = UIColor.cyan
+        label.backgroundColor = UIColor.lightGray
         label.textColor = UIColor.orange
         label.isHighlighted = true
         label.highlightedTextColor = UIColor.red
         label.textAlignment = NSTextAlignment.center
         self.view.addSubview(label)
+        let dict = [NSForegroundColorAttributeName:UIColor.purple,NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15)]
+        let labelStr = "hello Swift,Welcome to Swift"
+        let nameStr = NSMutableAttributedString.init(string: labelStr, attributes: dict)
+        nameStr.addAttribute(NSForegroundColorAttributeName, value: UIColor.green, range: NSRange(location:12,length:7))
+        nameStr.addAttribute(NSFontAttributeName, value: UIFont.systemFont(ofSize: 18, weight: 1.5), range: NSRange(location:12,length:7))
+        nameStr.addAttribute(NSForegroundColorAttributeName, value: UIColor.white, range: NSRange(location:23,length:5))
+        label.attributedText = nameStr
         
         label2 = UILabel(frame:CGRect(x:20,y:140,width:150,height:30))
         label2.text = "hello Swift"
@@ -53,12 +59,14 @@ class LabelViewController: UIViewController {
         label4.text = str
         label4.font = UIFont.systemFont(ofSize: 15)
         label4.numberOfLines = 0
-        label4.sizeToFit()
         label4.backgroundColor = UIColor.cyan
         label4.textColor = UIColor.orange
         label4.isHighlighted = true
         label4.highlightedTextColor = UIColor.red
-        label4.textAlignment = NSTextAlignment.right
+        label4.textAlignment = NSTextAlignment.left
+        
+        
+        
         self.view.addSubview(label4)
         
     }

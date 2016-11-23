@@ -37,7 +37,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         self.tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "demoIdentifier")
 //        self.tableView.tableHeaderView = imageView
         self.view.addSubview(self.tableView)
-        self.dataArray = ["View","Label","Button","ImageView","TextField","TextView","Switch","TableView","Collection","SearchBar"]
+        self.dataArray = ["View","Label","Button","ImageView","TextField","TextView","Switch","TableView","Collection","SearchBar","Search"]
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -124,6 +124,12 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             sbVC.navigationItem.title = cellString
             sbVC.view.backgroundColor = UIColor.white
             self.navigationController?.pushViewController(sbVC, animated: true)
+        }
+        else if indexPath.row == 10 {
+            let sVC = SeachViewController()
+            sVC.navigationItem.title = cellString
+            sVC.view.backgroundColor = UIColor.white
+            self.navigationController?.pushViewController(sVC, animated: true)
         }
         print("当前选中第\(indexPath.row)行")
     }

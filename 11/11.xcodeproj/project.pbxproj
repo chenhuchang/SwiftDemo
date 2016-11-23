@@ -25,6 +25,7 @@
 		2D3C3F871DE41674009FDE02 /* SwitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3C3F861DE41674009FDE02 /* SwitchViewController.swift */; };
 		2D3C3F891DE41681009FDE02 /* SearchBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3C3F881DE41681009FDE02 /* SearchBarViewController.swift */; };
 		2D3C3F8D1DE417D2009FDE02 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3C3F8C1DE417D2009FDE02 /* NavigationViewController.swift */; };
+		2D8B04651DE579E4008C157F /* SeachViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8B04641DE579E4008C157F /* SeachViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		2D3C3F861DE41674009FDE02 /* SwitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchViewController.swift; sourceTree = "<group>"; };
 		2D3C3F881DE41681009FDE02 /* SearchBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarViewController.swift; sourceTree = "<group>"; };
 		2D3C3F8C1DE417D2009FDE02 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
+		2D8B04641DE579E4008C157F /* SeachViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeachViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				2D3C3F861DE41674009FDE02 /* SwitchViewController.swift */,
 				2D3C3F881DE41681009FDE02 /* SearchBarViewController.swift */,
 				2D3C3F8C1DE417D2009FDE02 /* NavigationViewController.swift */,
+				2D8B04641DE579E4008C157F /* SeachViewController.swift */,
 				2D14A78A1DE4347200F2C352 /* 11-Bridging-Header.h */,
 			);
 			path = Demo;
@@ -196,6 +199,7 @@
 				2D3C3F621DE3F142009FDE02 /* ViewController.swift in Sources */,
 				2D3C3F7B1DE41603009FDE02 /* TextFieldViewController.swift in Sources */,
 				2D3C3F601DE3F142009FDE02 /* AppDelegate.swift in Sources */,
+				2D8B04651DE579E4008C157F /* SeachViewController.swift in Sources */,
 				2D3C3F871DE41674009FDE02 /* SwitchViewController.swift in Sources */,
 				2D3C3F751DE415E2009FDE02 /* LabelViewController.swift in Sources */,
 				2D14A78C1DE43F8300F2C352 /* CustomTableViewCell.swift in Sources */,
