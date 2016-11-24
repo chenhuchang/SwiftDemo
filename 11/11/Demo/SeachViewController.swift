@@ -11,7 +11,7 @@ import UIKit
 class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
     var mySearchBar:UISearchBar!
     var searchTableView:UITableView!
-    var searchDataArray = NSMutableArray()
+    var searchDataArray = ["UIView","UILabel","UIButton","UIImageView","UITextField","UITextView","UISwitch","UITableView","UICollection","UISearchBar","UITapgesture"]
     var selectDataArray = NSMutableArray()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,6 @@ class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         self.searchTableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: "demoIdentifier")
         //        self.tableView.tableHeaderView = imageView
         self.view.addSubview(self.searchTableView)
-        self.searchDataArray = ["View","Label","Button","ImageView","TextField","TextView","Switch","TableView","Collection","SearchBar"]
     }
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
@@ -57,13 +56,24 @@ class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        let boolStr = searchBar.text as NSString!
-        print("****正在输入的信息\(text) 之前的String:\(boolStr)")
         return true
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("正在输入的信息\(searchBar.text)")
+        if searchBar.text == "" {
+            self.selectDataArray.removeAllObjects()
+        }
+        else
+        {
+            self.selectDataArray.removeAllObjects()
+            for tmpStr in self.searchDataArray {
+                if tmpStr.lowercased().hasPrefix((searchBar.text?.lowercased())!) {
+                    self.selectDataArray.add(tmpStr)
+                }
+            }
+        }
+        self.searchTableView.reloadData()
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -75,9 +85,8 @@ class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 30
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "demoIdentifier")
         if cell ==  nil {
