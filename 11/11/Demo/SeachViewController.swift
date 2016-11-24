@@ -11,7 +11,8 @@ import UIKit
 class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate {
     var mySearchBar:UISearchBar!
     var searchTableView:UITableView!
-    var searchDataArray = ["UIView","UILabel","UIButton","UIImageView","UITextField","UITextView","UISwitch","UITableView","UICollection","UISearchBar","UITapgesture"]
+    var isInut = false
+    var searchDataArray = NSMutableArray.init(array: ["UIView","UILabel","UISwitch","UITableView","UICollection","UISearchBar","UITapgesture","View","Label","Button","ImageView","TextField","TextView","Switch","UIButton","UIImageView","UITextField","UITextView","TableView","Collection","SearchBar","Search"])
     var selectDataArray = NSMutableArray()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         mySearchBar.barTintColor = UIColor.blue
         self.view.addSubview(mySearchBar)
         
+        self.selectDataArray = self.searchDataArray.mutableCopy() as! NSMutableArray
         self.searchTableView = UITableView.init(frame: CGRect(x:0,y:124,width:(self.view.frame.size.width),height:(self.view.frame.size.height-124)), style: UITableViewStyle.plain)
         self.searchTableView.delegate = self;
         self.searchTableView.dataSource = self;
@@ -37,12 +39,17 @@ class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        self.isInut = true
         return true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.text = nil
+        self.selectDataArray.removeAllObjects()
+        self.selectDataArray = self.searchDataArray.mutableCopy() as! NSMutableArray
+        self.searchTableView.reloadData()
+        self.isInut = false
         print("点击cancle按钮")
     }
     
@@ -61,14 +68,14 @@ class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("正在输入的信息\(searchBar.text)")
+        self.selectDataArray.removeAllObjects()
         if searchBar.text == "" {
-            self.selectDataArray.removeAllObjects()
+            self.selectDataArray = self.searchDataArray.mutableCopy() as! NSMutableArray
         }
         else
         {
-            self.selectDataArray.removeAllObjects()
             for tmpStr in self.searchDataArray {
-                if tmpStr.lowercased().hasPrefix((searchBar.text?.lowercased())!) {
+                if (tmpStr as AnyObject).lowercased.hasPrefix((searchBar.text?.lowercased())!) {
                     self.selectDataArray.add(tmpStr)
                 }
             }
@@ -100,11 +107,26 @@ class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         var cellString = self.selectDataArray[indexPath.row] as! String
         cellString = cellString.appending("Demo")
         print("当前选中第\(indexPath.row)行*** 标题为\(cellString)")
+        
+        let cell = tableView.cellForRow(at: indexPath)
+        if !self.isInut {
+            cell?.contentView.backgroundColor = UIColor.red
+        }
+        else
+        {
+            cell?.contentView.backgroundColor = UIColor.orange
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.backgroundColor = UIColor.orange
+        if !self.isInut {
+            cell?.backgroundColor = UIColor.white
+        }
+        else
+        {
+            cell?.backgroundColor = UIColor.white
+        }
     }
     
     override func didReceiveMemoryWarning() {
