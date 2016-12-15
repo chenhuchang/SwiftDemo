@@ -107,7 +107,6 @@ class SeachViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         var cellString = self.selectDataArray[indexPath.row] as! String
         cellString = cellString.appending("Demo")
         print("当前选中第\(indexPath.row)行*** 标题为\(cellString)")
-        
         let cell = tableView.cellForRow(at: indexPath)
         if !self.isInut {
             cell?.contentView.backgroundColor = UIColor.red
